@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+
+import os
+import shutil
+import subprocess
+
+def install(args):
+    _install_bin()
+
+def pull(args):
+    if os.path.exists('~/.dotfiles'):
+        subprocess.call('git --work-tree=%s pull' % os.path.expanduser('~/.dotfiles'), shell=True)
+    else:
+        print 'Cloning Not Implemented Yet!'
+
+def push(args):
+    _update_file_list()
+    # subprocess.call('git --work-tree=%s push' % os.path.expanduser('~/.dotfiles'), shell=True)
+
+def _update_file_list():
+    existing_files = []
+    # XXX: Commented out because we should just autogen the file list
+    # if os.path.exists('files.txt'):
+        # with open('files.txt', 'r') as f:
+            # existing_files = [line for line in f.read().split('\n') if len(line)]
+
+    for root, dirs, files in os.walk('home'):
+        if '.git' in dirs: # Git repo, aka submodule
+            submodule_list.append(root)
+            dirs.remove('.git')
+        else:
+            print 'Unrecognized:', root, dirs, files
+
+    with open('files.txt', 'w') as f:
+        print
+
+def _update_submodule_list():
+    pass
+
+def _install_bin(prefix='/usr', symlink=True):
+    bin_dir = os.path.join(prefix, 'bin')
+    directory, filename = os.path.split(__file__)
+    target_path = os.path.join(bin_dir, filename)
+
+    if os.path.lexists(target_path):
+        if os.path.exists(target_path): # It really exists and is working
+            # TODO: make it so that we overwrite it isntead of erroring out
+            print 'WARNING: %s already exists, skipping!' % target_path
+            return 
+        else: # It's a broken link
+            if not os.access(bin_dir, os.W_OK):
+                print 'WARNING: Insufficient permissions to install to %s!' % target_path
+                return
+            os.remove(target_path)
+    elif os.path.exists(bin_dir) and not os.access(bin_dir, os.W_OK):
+        print 'WARNING: Insufficient permissions to install to %s!' % target_path
+        return
+    else:
+        print 'ERROR: Unexpected error, %s probably does not exist?' % bin_dir
+
+    if symlink:
+        os.symlink(os.path.abspath(__file__), target_path)
+    else:
+        shutil.copy2(__file__, target_path)
+    print 'Installed binary to %s' % target_path
+
+if __name__ == '__main__':
+    import argparse 
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers()
+
+    parser_install = subparsers.add_parser('install')
+    parser_install.set_defaults(func=install)
+
+    parser_pull = subparsers.add_parser('pull')
+    parser_pull.set_defaults(func=pull)
+
+    parser_push = subparsers.add_parser('push')
+    parser_push.set_defaults(func=push)
+
+    parsed_args = parser.parse_args()
+    parsed_args.func(parsed_args)

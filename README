@@ -1,1 +1,11 @@
-readme
+init:
+- install ppa, with key
+- set up dotfiles dir
+- install dotfiles package
+
+push:
+- generate file list (interactive?)
+- patch, build, upload ppa files
+
+pull:
+- not necessary, all subsequent updates will be from aptitude
