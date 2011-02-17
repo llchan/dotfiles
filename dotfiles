@@ -4,38 +4,72 @@ import os
 import shutil
 import subprocess
 
+DOTFILES_DIR = os.path.expanduser('~/.dotfiles')
+INNER_HOME_DIR = os.path.join(DOTFILES_DIR, 'home')
+FILES_LIST_PATH = os.path.join(DOTFILES_DIR, 'files.txt')
+SUBMODULES_LIST_PATH = os.path.join(DOTFILES_DIR, 'submodules.txt')
+
+def init(args): # Do we even need this? Just aliasing right now...
+    pull()
+
 def install(args):
     _install_bin()
 
 def pull(args):
-    if os.path.exists('~/.dotfiles'):
-        subprocess.call('git --work-tree=%s pull' % os.path.expanduser('~/.dotfiles'), shell=True)
+    _git_pull()
+    _symlink_dotfiles()
+
+def push(args):
+    _update_lists()
+    # _git_push()
+
+
+
+def _git_pull():
+    if os.path.exists(DOTFILES_DIR):
+        subprocess.call('git --work-tree=%s pull' % DOTFILES_DIR, shell=True)
     else:
         print 'Cloning Not Implemented Yet!'
 
-def push(args):
-    _update_file_list()
-    # subprocess.call('git --work-tree=%s push' % os.path.expanduser('~/.dotfiles'), shell=True)
+    subprocess.call('git --work-tree=%s submodules init' % DOTFILES_DIR, shell=True)
+    subprocess.call('git --work-tree=%s submodules update' % DOTFILES_DIR, shell=True)
+    
+def _git_push():
+    subprocess.call('git --work-tree=%s push' % DOTFILES_DIR, shell=True)
 
-def _update_file_list():
-    existing_files = []
-    # XXX: Commented out because we should just autogen the file list
-    # if os.path.exists('files.txt'):
-        # with open('files.txt', 'r') as f:
-            # existing_files = [line for line in f.read().split('\n') if len(line)]
+def _git_add(path):
+    subprocess.call('git --work-tree=%s add %s' % (DOTFILES_DIR, path), shell=True)
 
-    for root, dirs, files in os.walk('home'):
-        if '.git' in dirs: # Git repo, aka submodule
-            submodule_list.append(root)
-            dirs.remove('.git')
-        else:
-            print 'Unrecognized:', root, dirs, files
+def _update_lists():
+    files = []
+    submodules = []
 
-    with open('files.txt', 'w') as f:
-        print
+    for name in os.listdir(INNER_HOME_DIR):
+        print name
+        path = os.path.join(INNER_HOME_DIR, name)
+        if os.path.isdir(path) and '.git' in os.listdir(path): # Git repo, aka submodule
+            submodules.append(name)
+            continue
 
-def _update_submodule_list():
-    pass
+        _git_add(path)
+
+        dotfilename = '.%s' % name
+        files.append(dotfilename)
+
+    with open(FILES_LIST_PATH, 'w') as f:
+        f.write('\n'.join(files))
+
+    with open(SUBMODULES_LIST_PATH, 'w') as f:
+        f.write('\n'.join(submodules))
+
+def _symlink_dotfiles():
+    files = []
+    if os.path.exists(FILES_LIST_PATH):
+        with open(FILES_LIST_PATH, 'r') as f:
+            files.extend([line for line in f.read().split('\n') if len(line)])
+
+    print files
+
 
 def _install_bin(prefix='/usr', symlink=True):
     bin_dir = os.path.join(prefix, 'bin')
@@ -71,6 +105,9 @@ if __name__ == '__main__':
 
     parser_install = subparsers.add_parser('install')
     parser_install.set_defaults(func=install)
+
+    parser_init = subparsers.add_parser('init')
+    parser_init.set_defaults(func=init)
 
     parser_pull = subparsers.add_parser('pull')
     parser_pull.set_defaults(func=pull)

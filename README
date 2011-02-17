@@ -3,6 +3,9 @@ init:
 - set up dotfiles dir
 - install dotfiles package
 
+install:
+- install the bin file somewhere
+
 push:
 - generate file list (interactive?)
 - patch, build, upload ppa files
