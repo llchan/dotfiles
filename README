@@ -1,14 +1,4 @@
-init:
-- install ppa, with key
-- set up dotfiles dir
-- install dotfiles package
-
-install:
-- install the bin file somewhere
-
-push:
-- generate file list (interactive?)
-- patch, build, upload ppa files
-
-pull:
-- not necessary, all subsequent updates will be from aptitude
+dotfiles update
+dotfiles upgrade
+dotfiles status
+dotfiles diff
