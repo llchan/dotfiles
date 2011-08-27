@@ -15,10 +15,11 @@ set et sw=4 ts=4
 let mapleader = ","
 filetype plugin on
 filetype indent on
+syntax on
 
 set autoindent
-" set smartindent
-set cindent
+"set smartindent
+"set cindent
 set smarttab
 
 set incsearch
@@ -59,7 +60,7 @@ map Y y$
 set t_Co=256
 let g:solarized_termcolors=16
 set background=dark
-"colorscheme solarized
+colorscheme solarized
 
 "====================
 " Shortcuts
@@ -220,8 +221,8 @@ let g:EclimMakeLCD = 0
 "====================
 " R and Rnw
 "====================
-au BufNewFile,BufRead *.R setfiletype r
-au BufNewFile,BufRead *.Rnw setf noweb
+" au BufNewFile,BufRead *.R setfiletype r
+" au BufNewFile,BufRead *.Rnw setf noweb
 
 "====================
 " Pathogen
