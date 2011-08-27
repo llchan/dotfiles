@@ -1,4 +1,1 @@
-dotfiles update
-dotfiles upgrade
-dotfiles status
-dotfiles diff
+Automatically pulls the submodules and symlinks things to these files.
