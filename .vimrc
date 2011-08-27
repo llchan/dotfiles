@@ -1,3 +1,5 @@
+" runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 "====================
 " Basic Options
 "====================
@@ -221,8 +223,14 @@ let g:EclimMakeLCD = 0
 au BufNewFile,BufRead *.R setfiletype r
 au BufNewFile,BufRead *.Rnw setf noweb
 
+"====================
+" Pathogen
+"====================
+" call pathogen#infect()
+
 
 "====================
 " Notes to self
 "====================
 " + To make things silent, call :silent [command]
+"

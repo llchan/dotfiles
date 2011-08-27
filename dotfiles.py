@@ -20,7 +20,6 @@ class DotfileInstaller:
         self._install('.xinitrc')
 
     def vim(self):
-        self._install('.vim-pathogen/autoload', '.vim/autoload')
         self._install('.vimrc')
         self._install('.vim')
 
