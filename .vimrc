@@ -1,4 +1,4 @@
-" runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 
 "====================
 " Basic Options
@@ -226,7 +226,7 @@ au BufNewFile,BufRead *.Rnw setf noweb
 "====================
 " Pathogen
 "====================
-" call pathogen#infect()
+call pathogen#infect()
 
 
 "====================
