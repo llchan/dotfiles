@@ -14,7 +14,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 
-DEFAULT_SESSION=subtle
+DEFAULT_SESSION=wmfs
 
 case $1 in
 subtle)
@@ -23,8 +23,8 @@ subtle)
 awesome)
 	exec awesome
 	;;
-i3)
-	exec i3
+wmfs)
+	exec wmfs
 	;;
 xfce)
 	exec ck-launch-sesion startxfce4
