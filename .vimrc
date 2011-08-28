@@ -1,4 +1,8 @@
+"====================
+" Pathogen
+"====================
 runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 "====================
 " Basic Options
@@ -221,13 +225,10 @@ let g:EclimMakeLCD = 0
 "====================
 " R and Rnw
 "====================
-" au BufNewFile,BufRead *.R setfiletype r
-" au BufNewFile,BufRead *.Rnw setf noweb
+au BufNewFile,BufRead *.R setfiletype r
+au BufNewFile,BufRead *.Rnw setf noweb
+autocmd FileType Rnw nnoremap <silent><buffer><leader>m :make<cr>
 
-"====================
-" Pathogen
-"====================
-call pathogen#infect()
 
 
 "====================

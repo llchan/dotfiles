@@ -10,8 +10,8 @@
     # true  -- default, set focus
     # false -- click go to client; including dockapps
     focus_pointer_click = true
-    status_timing      = 1     #seconds
-    status_path       = "~/.config/wmfs/status.sh"
+    # status_timing      = 1     #seconds
+    # status_path       = "~/.config/wmfs/status.sh"
 [/misc]
 
 [bar]
@@ -132,7 +132,8 @@
     tag_round      = false
 
     # Going twice on the same tag will bring you back on the previous one
-    tag_auto_prev  = true
+    # tag_auto_prev  = true
+    tag_auto_prev  = false
 
     occupied_bg    = "#202020"
     occupied_fg    = "#66A9BA"
@@ -167,11 +168,13 @@
     [tag] name = "chat" [/tag]
     [tag] name = "music" [/tag]
     [tag] name = "media" [/tag]
+    [tag] name = "other" [/tag]
 [/tags]
 
 [root]
     # Command you can execute to set the background.
-    background_command = "nitrogen --restore"
+    # background_command = "nitrogen --restore" 
+    background_command = "~/.config/wmfs/autostart.sh"
 
     [mouse] button = "4" func = "tag_next"              [/mouse]
     [mouse] button = "5" func = "tag_prev"              [/mouse]
@@ -193,12 +196,12 @@
     new_client_get_mouse = false
 
     # send all client that have no tag rule in this default tag
-    #default_open_tag     = 4
+    default_open_tag     = 6
     # same as above but for the screen
     #default_open_screen  = 1
 
     # Space between tiled clients
-    padding = 0
+    padding = 12
 
     # Modifier for mouse use
     modifier = "Alt"
@@ -252,6 +255,12 @@
         instance = "chromium"
         tag = 2
         follow_client = true
+    [/rule]
+
+    [rule]
+        instance = "Pidgin"
+        tag = 3
+        follow_client = false
     [/rule]
 [/rules]
 
@@ -327,6 +336,7 @@
 
     # Open a terminal.
     [key] mod = {"Alt"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
+    [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
 
     # Kill the selected client.
     [key] mod = {"Alt"} key = "q" func = "client_kill" [/key]
@@ -336,9 +346,11 @@
 
     # Swap current client with the next.
     [key] mod = {"Alt"} key = "t" func = "client_swap_next" [/key]
+    [key] mod = {"Super", "Shift"} key = "j" func = "client_swap_next" [/key]
 
     # Swap current client with the previous.
     [key] mod = {"Alt", "Shift"} key = "t" func = "client_swap_prev" [/key]
+    [key] mod = {"Super", "Shift"} key = "k" func = "client_swap_prev" [/key]
 
     # Set the selected client as Master
     [key] mod = {"Control"} key = "m" func = "client_set_master" [/key]
@@ -362,14 +374,16 @@
     # Select the next client.
     [key] mod = {"Alt"} key = "Tab" func = "client_next" [/key]
     [key] mod = {"Alt"} key = "j" func = "client_next" [/key]
+    [key] mod = {"Super"} key = "j" func = "client_next" [/key]
     # Select the previous client.
     [key] mod = {"Alt", "Shift"} key = "Tab" func = "client_prev" [/key]
     [key] mod = {"Alt"} key = "k" func = "client_prev" [/key]
+    [key] mod = {"Super"} key = "k" func = "client_prev" [/key]
 
     # Select the next tag.
-    [key] mod = {"Control"} key = "Right" func = "tag_next" [/key]
+    [key] mod = {"Super"} key = "Right" func = "tag_next" [/key]
     # Select the previous tag.
-    [key] mod = {"Control"} key = "Left" func = "tag_prev" [/key]
+    [key] mod = {"Super"} key = "Left" func = "tag_prev" [/key]
 
     # Select the next visible tag.
     [key] mod = {"Control","Alt"} key = "Right" func = "tag_next_visible" [/key]
@@ -383,8 +397,10 @@
 
     # Increase mwfact.
     [key] mod = {"Alt"} key = "l" func = "set_mwfact" cmd = "+0.025" [/key]
+    [key] mod = {"Super"} key = "l" func = "set_mwfact" cmd = "+0.025" [/key]
     # Decrease mwfact.
     [key] mod = {"Alt"} key = "h" func = "set_mwfact" cmd = "-0.025" [/key]
+    [key] mod = {"Super"} key = "h" func = "set_mwfact" cmd = "-0.025" [/key]
 
     # Increase nmaster.
     [key] mod = {"Alt"} key = "d" func = "set_nmaster" cmd = "+1" [/key]

@@ -21,6 +21,9 @@ class DotfileInstaller:
     def xinitrc(self):
         self._install('.xinitrc')
 
+    def irssi(self):
+        self._install('.irssi')
+
     def vim(self):
         self._install('.vimrc')
         self._install('.vim')
