@@ -15,6 +15,7 @@ set backupdir=~/.vim_swap
 set nowritebackup " to make it work better with dropbox
 set viminfo='100,f0
 set scrolloff=20
+set cursorline
 set et sw=4 ts=4
 let mapleader = ","
 filetype plugin on
