@@ -1,3 +1,57 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!!  Fonts
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Xft.dpi:		    96
+Xft.antialias:		true
+Xft.hinting:		full
+Xft.hintstyle:		hintslight
+Xft.rgba:		    rgb
+
+*faceName: terminus
+*faceSize: 8
+*VT100*colorMode: on
+*VT100*dynamicColors: on
+
+! URxvt.transparent:	true
+! URxvt.inheritPixmap:true
+! URxvt.imLocale:		en_AU.UTF-8
+URxvt.scrollBar:	false
+! URxvt.saveLines:	32767
+URxvt.cursorBlink:	true
+! URxvt.cursorColor:	S_base0
+! URxvt.color:		S_base1
+! URxvt.shading:		30
+! URxvt.tintcolor:	S_base02
+URxvt.depth:		24
+URxvt.visualBell:	true
+URxvt.urgentOnBell: true
+
+! URxvt*font:		        xft:DejaVu Sans Mono:size=8
+! URxvt*boldFont:		    xft:DejaVu Sans Mono:size=8:bold
+! URxvt*italicFont:	    xft:DejaVu Sans Mono:size=8:italic
+! URxvt*bolditalicFont:	xft:DejaVu Sans Mono:size=8:bold:italic
+URxvt*font:		        xft:terminus:size=8
+URxvt*boldFont:		        xft:terminus:size=8
+! URxvt*boldFont:		    xft:terminus:size=8:bold
+! URxvt*italicFont:	    xft:terminus:size=8:italic
+! URxvt*bolditalicFont:	xft:terminus:size=8:bold:italic
+! URxvt*font:		        xft:Proggy Clean:pixelsize=9:antialias=0:hinting=0:hintstyle=hintnone
+! URxvt*font:    -*-proggyclean-medium-r-normal-*-13-*-*-*-*-*-*-*
+! URxvt*boldFont: -*-proggyclean-medium-r-normal-*-13-*-*-*-*-*-*-*
+! URxvt*boldFont:		    xft:Proggy Clean:pixelsize=8:bold
+! URxvt*italicFont:	    xft:Proggy Clean:pixelsize=8:italic
+! URxvt*bolditalicFont:	xft:Proggy Clean:pixelsize=8:bold:italic
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!!  Solarized Colors
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
@@ -36,49 +90,62 @@
 #define S_cyan          #2aa198
 #define S_green         #859900
 
-! *background:            S_base03
-! *foreground:            S_base00
-! *fading:                40
+*background:            S_base03
+*foreground:            S_base00
+*fading:                40
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!!  Overwrite with custom colors
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ! *fadeColor:             S_base03
 ! *cursorColor:           S_base1
 ! *pointerColorBackground:S_base01
 ! *pointerColorForeground:S_base1
-
-!! black dark/light
-! *color0:                S_base02
-! *color8:                S_base03
-
-! !! red dark/light
-! *color1:                S_red
-! *color9:                S_orange
-
-! !! green dark/light
-! *color2:                S_green
-! *color10:               S_base01
-
-! !! yellow dark/light
-! *color3:                S_yellow
-! *color11:               S_base00
-
-! !! blue dark/light
-! *color4:                S_blue
-! *color12:               S_base0
-
-! !! magenta dark/light
-! *color5:                S_magenta
-! *color13:               S_violet
-
-! !! cyan dark/light
-! *color6:                S_cyan
-! *color14:               S_base1
-
-! !! white dark/light
-! *color7:                S_base2
-! *color15:               S_base3
-
-URxvt.foreground: #E9E9E9
-URxvt.background: #161616
-URxvt.cursorColor: #FDA53C
+*foreground: #888888
+*background: #161616
+*fading: 40
+*fadeColor:  #161616
+*cursorColor: #FDA53C
 !black
 *color0: #222222
 *color8: #666666
@@ -103,48 +170,4 @@ URxvt.cursorColor: #FDA53C
 !white
 *color7: #DDDDDD
 *color15: #CCCCCC
-
-Xft.dpi:		    96
-Xft.antialias:		true
-Xft.hinting:		full
-Xft.hintstyle:		hintslight
-Xft.rgba:		    rgb
-
-! URxvt.transparent:	true
-! URxvt.inheritPixmap:true
-! URxvt.imLocale:		en_AU.UTF-8
-URxvt.scrollBar:	false
-! URxvt.saveLines:	32767
-URxvt.cursorBlink:	true
-! URxvt.cursorColor:	S_base0
-! URxvt.color:		S_base1
-! URxvt.shading:		30
-! URxvt.tintcolor:	S_base02
-URxvt.depth:		24
-! URxvt.visualBell:	true
-URxvt.urgentOnBell: true
-
-! URxvt*font:		        xft:DejaVu Sans Mono:size=8
-! URxvt*boldFont:		    xft:DejaVu Sans Mono:size=8:bold
-! URxvt*italicFont:	    xft:DejaVu Sans Mono:size=8:italic
-! URxvt*bolditalicFont:	xft:DejaVu Sans Mono:size=8:bold:italic
-URxvt*font:		        xft:terminus:size=8
-URxvt*boldFont:		    xft:terminus:size=8:bold
-! URxvt*italicFont:	    xft:terminus:size=8:italic
-! URxvt*bolditalicFont:	xft:terminus:size=8:bold:italic
-! URxvt*font:		        xft:Proggy Clean:pixelsize=9:antialias=0:hinting=0:hintstyle=hintnone
-!URxvt*font:    -*-proggyclean-medium-r-normal-*-13-*-*-*-*-*-*-*
-!URxvt*boldFont: -*-proggyclean-medium-r-normal-*-13-*-*-*-*-*-*-*
-! URxvt*boldFont:		    xft:Proggy Clean:pixelsize=8:bold
-! URxvt*italicFont:	    xft:Proggy Clean:pixelsize=8:italic
-! URxvt*bolditalicFont:	xft:Proggy Clean:pixelsize=8:bold:italic
-
-!URxvt*perl-ext-common:  default,matcher,clipboard
-!URxvt*urlLauncher:      urxvt-to-uzbl.sh
-!URxvt.matcher.button:   1
-
-*faceName: terminus
-*faceSize: 8
-*VT100*colorMode: on
-*VT100*dynamicColors: on
 

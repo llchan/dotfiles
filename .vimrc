@@ -64,7 +64,8 @@ map Y y$
 set t_Co=256
 let g:solarized_termcolors=16
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+colorscheme molokai
 
 "====================
 " Shortcuts
