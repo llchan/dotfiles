@@ -229,7 +229,8 @@ let g:EclimMakeLCD = 0
 "====================
 au BufNewFile,BufRead *.R setfiletype r
 au BufNewFile,BufRead *.Rnw setf noweb
-autocmd FileType Rnw nnoremap <silent><buffer><leader>m :make<cr>
+autocmd FileType rnoweb nnoremap <silent><buffer><leader>m :!make<cr><cr>
+autocmd FileType rnoweb let &l:commentstring='# %s'
 
 
 
