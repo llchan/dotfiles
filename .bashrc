@@ -32,6 +32,7 @@ fi
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
+color_prompt=yes
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -172,11 +173,11 @@ export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib:
 export PATH=$PATH:/usr/local/cuda/bin
 export CUDA_ROOT=/usr/local/cuda
 
-calc(){ awk "BEGIN{ print $* }" ;}
+# calc(){ awk "BEGIN{ print $* }" ;}
 
-alias wf='sudo iwconfig wlan0 rate 54M'
+# alias wf='sudo iwconfig wlan0 rate 54M'
 
-export P4CONFIG=.p4config
+# export P4CONFIG=.p4config
 
 # export PYTHONPATH=$PYTHONPATH:/mts-cm/home/lawrencechan/pyVpx
 # export PYTHONPATH=$PYTHONPATH:/build/toolchain/noarch/pyVpx-4.0.0-162856/
@@ -212,4 +213,4 @@ esac
 
 #xrdb -merge $HOME/.Xdefaults
 
-alias agi='cd /home/llchan/Dropbox/Projects/AgI'
+# alias agi='cd /home/llchan/Dropbox/Projects/AgI'
