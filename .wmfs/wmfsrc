@@ -154,7 +154,8 @@
     border = false
 
     # Hide empty tags in tag list
-    autohide = false
+    # autohide = false 
+    autohide = true
 
     # Mouse buttons action on tag.
     mouse_button_tag_sel       = "1"
@@ -332,44 +333,42 @@
 
 [keys]
     # Reload the configuration of wmfs.
-    [key] mod = {"Alt", "Control"} key = "r" func = "reload" [/key]
+    [key] mod = {"Control", "Alt"} key = "r" func = "reload" [/key]
 
     # Open a terminal.
     [key] mod = {"Alt"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
     [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
 
     # Kill the selected client.
-    [key] mod = {"Alt"} key = "q" func = "client_kill" [/key]
+    [key] mod = {"Super", "Control"} key = "q" func = "client_kill" [/key]
 
     # Quit wmfs.
-    [key] mod = {"Control", "Alt", "Shift"} key = "q" func = "quit" [/key]
+    [key] mod = {"Super", "Control", "Shift"} key = "q" func = "quit" [/key]
 
     # Swap current client with the next.
-    [key] mod = {"Alt"} key = "t" func = "client_swap_next" [/key]
     [key] mod = {"Super", "Shift"} key = "j" func = "client_swap_next" [/key]
 
     # Swap current client with the previous.
-    [key] mod = {"Alt", "Shift"} key = "t" func = "client_swap_prev" [/key]
     [key] mod = {"Super", "Shift"} key = "k" func = "client_swap_prev" [/key]
 
     # Set the selected client as Master
-    [key] mod = {"Control"} key = "m" func = "client_set_master" [/key]
+    [key] mod = {"Super", "Control"} key = "m" func = "client_set_master" [/key]
 
     # Toggle maximum the selected client
-    [key] mod = {"Alt"} key = "m" func = "toggle_max" [/key]
+    [key] mod = {"Super", "Control"} key = "m" func = "toggle_max" [/key]
 
     # Toggle free the selected client.
-    [key] mod = {"Alt"} key = "f" func = "toggle_free" [/key]
+    [key] mod = {"Super", "Control"} key = "f" func = "toggle_free" [/key]
 
     # Toggle the position of the infobar.
-    [key] mod = {"Alt"} key = "b" func = "toggle_infobar_position" [/key]
-    [key] mod = {"Alt", "Shift"} key = "b" func = "toggle_infobar_display" [/key]
+    [key] mod = {"Super", "Control", "Shift"} key = "b" func = "toggle_infobar_position" [/key]
+    [key] mod = {"Super", "Control", "Shift"} key = "h" func = "toggle_infobar_display" [/key]
 
     # Toggle the resizehint of the current tag/screen
-    [key] mod = {"Shift", "Control"} key = "r" func = "toggle_resizehint" [/key]
+    [key] mod = {"Super", "Control"} key = "r" func = "toggle_resizehint" [/key]
 
     # Toggle the tag_autohide mode
-    [key] mod = {"Shift", "Control"} key = "t" func = "toggle_tagautohide" [/key]
+    [key] mod = {"Super", "Control"} key = "t" func = "toggle_tagautohide" [/key]
 
     # Select the next client.
     [key] mod = {"Alt"} key = "Tab" func = "client_next" [/key]
@@ -381,14 +380,14 @@
     [key] mod = {"Super"} key = "k" func = "client_prev" [/key]
 
     # Select the next tag.
-    [key] mod = {"Super"} key = "Right" func = "tag_next" [/key]
+    [key] mod = {"Super", "Control"} key = "Right" func = "tag_next" [/key]
     # Select the previous tag.
-    [key] mod = {"Super"} key = "Left" func = "tag_prev" [/key]
+    [key] mod = {"Super", "Control"} key = "Left" func = "tag_prev" [/key]
 
     # Select the next visible tag.
-    [key] mod = {"Control","Alt"} key = "Right" func = "tag_next_visible" [/key]
+    [key] mod = {"Super"} key = "Right" func = "tag_next_visible" [/key]
     # Select the previous visible tag.
-    [key] mod = {"Control","Alt"} key = "Left" func = "tag_prev_visible" [/key]
+    [key] mod = {"Super"} key = "Left" func = "tag_prev_visible" [/key]
 
     # Set the next layout.
     [key] mod = {"Super"} key = "space" func = "layout_next" [/key]
@@ -454,6 +453,6 @@
     [key] mod = {"Super", "Shift"} key = "a" func = "client_screen_next" [/key]
     [key] mod = {"Super", "Shift"} key = "z" func = "client_screen_prev" [/key]
 
-    [key] mod = {"Alt"} key = "e" func = "toggle_tag_expose" [/key]
+    # [key] mod = {"Alt"} key = "e" func = "toggle_tag_expose" [/key]
 [/keys]
 
