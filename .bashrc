@@ -210,7 +210,10 @@ esac
 export WORKON_HOME="$HOME/.virtualenvs"
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-source /usr/bin/virtualenvwrapper.sh
+
+if [ -x /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 #xrdb -merge $HOME/.Xdefaults
 
