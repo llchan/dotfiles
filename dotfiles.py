@@ -9,7 +9,10 @@ class DotfileInstaller:
         all_methods = inspect.getmembers(self, predicate=inspect.ismethod)
         self.installables = [(name,fn) for (name,fn) in all_methods if name != 'run' and name[0] != '_']
 
-        self.XDG_CONFIG_HOME = os.environ['XDG_CONFIG_HOME']
+        try:
+            self.XDG_CONFIG_HOME = os.environ['XDG_CONFIG_HOME']
+        except:
+            pass
 
     def bashrc(self):
         self._install('.bashrc')
@@ -28,8 +31,18 @@ class DotfileInstaller:
         self._install('.vimrc')
         self._install('.vim')
 
+    def screen(self):
+        self._install('.screenrc')
+
+    def tmux(self):
+        self._install('.tmux.conf')
+
+    def Xmodmap(self):
+        self._install('.Xmodmap')
+
     def wmfs(self):
-        self._install('.wmfs', os.path.join(self.XDG_CONFIG_HOME, 'wmfs'))
+        if hasattr(self, 'XDG_CONFIG_HOME'):
+            self._install('.wmfs', os.path.join(self.XDG_CONFIG_HOME, 'wmfs'))
 
     def subtle(self):
         print("Not implemented!")

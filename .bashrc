@@ -76,13 +76,14 @@ esac
 #fi
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
+# if [ -x /usr/bin/dircolors ]; then
+if [ -x /bin/dircolors ]; then
+    eval "`dircolors -b $HOME/.dir_colors`"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
@@ -206,10 +207,10 @@ esac
 # xset fp+ ~/.fonts
 # xset fp rehash
 
-#export WORKON_HOME="$HOME/.python-environments"
-#export PIP_VIRTUALENV_BASE=$WORKON_HOME
-#export PIP_RESPECT_VIRTUALENV=true
-#source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME="$HOME/.virtualenvs"
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+source /usr/bin/virtualenvwrapper.sh
 
 #xrdb -merge $HOME/.Xdefaults
 

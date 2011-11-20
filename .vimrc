@@ -10,8 +10,8 @@ call pathogen#infect()
 set nocompatible
 set showcmd
 set ttyfast
-set directory=~/.vim_swap
-set backupdir=~/.vim_swap
+" set directory=~/.vim_swap
+" set backupdir=~/.vim_swap
 set nowritebackup " to make it work better with dropbox
 set viminfo='100,f0
 set scrolloff=20

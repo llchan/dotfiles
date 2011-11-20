@@ -3,7 +3,7 @@
     raisefocus            = false
     raiseswitch           = false
     focus_follow_mouse    = false
-    focus_follow_movement = true
+    focus_follow_movement = false
     opacity               = 255
 
     # focus_pointer_click: click on unfocused client area:
@@ -185,7 +185,7 @@
 [client]
     client_round         = true
     client_auto_center   = false
-    border_height        = 1
+    border_height        = 2
     border_shadow        = false
     border_normal        = "#404040"#"#202020"
     border_focus         = "#66A9BA"
@@ -316,7 +316,7 @@
 [launcher]
     [set_launcher]
         # Limit size of the launcher window (px)
-        width_limit = 300
+        width_limit = 800
 
         name = "launcher_exec"
         prompt = "Exec: "

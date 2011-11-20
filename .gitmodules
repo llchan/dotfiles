@@ -19,6 +19,3 @@
 [submodule ".vim/bundle/pathogen"]
 	path = .vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/pyflakes"]
-	path = .vim/bundle/pyflakes
-	url = https://github.com/kevinw/pyflakes-vim.git
