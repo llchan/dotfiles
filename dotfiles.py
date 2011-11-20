@@ -14,6 +14,9 @@ class DotfileInstaller:
         except:
             pass
 
+    def dir_colors(self):
+        self._install('.dir_colors')
+
     def bashrc(self):
         self._install('.bashrc')
         self._install('.bash_profile')
