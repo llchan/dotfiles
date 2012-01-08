@@ -4,6 +4,11 @@ import sys
 import inspect
 import subprocess
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 class DotfileInstaller:
     def __init__(self):
         all_methods = inspect.getmembers(self, predicate=inspect.ismethod)
