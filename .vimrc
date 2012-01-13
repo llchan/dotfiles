@@ -9,6 +9,11 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
 
 "====================
 " Basic Options
