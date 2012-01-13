@@ -1,8 +1,12 @@
 "====================
 " Pathogen
 "====================
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"runtime bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
 
 "====================
 " Basic Options
