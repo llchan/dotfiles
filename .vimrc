@@ -233,6 +233,7 @@ autocmd FileType rnoweb nnoremap <silent><buffer><leader>m :!make<cr><cr>
 autocmd FileType rnoweb let &l:commentstring='# %s'
 
 
+au BufNewFile,BufRead *.j2 setfiletype jinja
 
 "====================
 " Notes to self
