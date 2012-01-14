@@ -158,6 +158,12 @@ if &t_Co > 255
    hi Label           ctermfg=229               cterm=none
    hi Macro           ctermfg=193
    hi SpecialKey      ctermfg=81
+   if has("spell")
+      hi SpellBad    ctermbg=88
+      hi SpellCap    ctermbg=166
+      hi SpellLocal  ctermbg=166
+      hi SpellRare   ctermbg=166
+   endif
 
    hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold
    hi ModeMsg         ctermfg=229
