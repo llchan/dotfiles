@@ -9,7 +9,15 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'ervandew/supertab'
+
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+
 Bundle 'tpope/vim-fugitive'
+
+Bundle 'Lokaltog/vim-powerline.git'
 
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -52,6 +60,8 @@ set spelllang=en_us
 
 set wildmenu
 set wildmode=list:longest
+
+set laststatus=2
 
 " set textwidth=80
 " set ofu=syntaxcomplete#Complete
