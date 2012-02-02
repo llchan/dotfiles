@@ -85,7 +85,7 @@ class DotfileInstaller:
 
     def _external(self, cmd, indent=1):
         p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        stdoutdata, _stderrdata = p.communicate()
+        stdoutdata, _ = p.communicate()
         for l in stdoutdata.decode('utf-8').splitlines():
             print("%s%s" % ('\t' * indent, l))
 
