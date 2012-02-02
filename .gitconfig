@@ -1,0 +1,19 @@
+[core]
+    editor = vim
+
+[user]
+    name = "Lawrence Chan"
+    email = "fake@fake.com"
+
+[color]
+    ui = true
+
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    df = diff
+    ol = "log --oneline"
+
+[format]
+    ;pretty = oneline

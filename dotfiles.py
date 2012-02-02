@@ -4,105 +4,72 @@ import sys
 import inspect
 import subprocess
 
+### Python 2 compatability
 try:
     input = raw_input
 except NameError:
     pass
 
-class DotfileInstaller:
-    def __init__(self):
-        all_methods = inspect.getmembers(self, predicate=inspect.ismethod)
-        self.installables = [(name,fn) for (name,fn) in all_methods if name != 'run' and name[0] != '_']
+def get_git_root():
+    stdout = subprocess.check_output('git rev-parse --show-toplevel',
+            shell=True, cwd=os.path.dirname(os.path.abspath(__file__)))
+    return stdout.decode('utf-8').strip()
+GIT_ROOT = get_git_root()
 
-        try:
-            self.XDG_CONFIG_HOME = os.environ['XDG_CONFIG_HOME']
-        except:
-            pass
+HOME = os.path.expanduser('~')
 
-    def dir_colors(self):
-        self._install('.dir_colors')
+SPECIAL = {
+    os.path.basename(__file__): None,
+    '.git': None,
+    '.gitmodules': None,
+    '.gitignore': None,
+    '.wmfs': None,
+    '.irssi': None,
+    }
 
-    def bashrc(self):
-        self._install('.bashrc')
-        self._install('.bash_profile')
+def _external(cmd, cwd=None):
+    subprocess.check_call(cmd, shell=True, cwd=cwd)
 
-    def Xresources(self):
-        self._install('.Xresources')
-
-    def xinitrc(self):
-        self._install('.xinitrc')
-
-    def irssi(self):
-        self._install('.irssi')
-
-    def vim(self):
-        self._install('.vimrc')
-        self._install('.vim')
-
-    def screen(self):
-        self._install('.screenrc')
-
-    def tmux(self):
-        self._install('.tmux.conf')
-
-    def Xmodmap(self):
-        self._install('.Xmodmap')
-
-    def wmfs(self):
-        if hasattr(self, 'XDG_CONFIG_HOME'):
-            self._install('.wmfs', os.path.join(self.XDG_CONFIG_HOME, 'wmfs'))
-
-    def subtle(self):
-        print("Not implemented!")
-
-    def awesome(self):
-        print("Not implemented!")
-
-    def _install(self, src, dst=None):
-        if dst is None:
-            dst = os.path.join(os.path.expanduser('~'), src)
-        src = os.path.realpath(src)
-
-        if os.path.lexists(dst):
-            if os.path.islink(dst):
-                print("\tRemoving old symlink!")
-                os.remove(dst)
-            else:
-                print("\t[Warning] %s already exists as a non-link. Renaming!" % dst)
-                os.rename(dst, '%s.bak' % dst)
-        print("\tSymlinking %s to %s" % (dst, src))
-        os.symlink(src, dst)
-
-    def _confirm(self, prompt, default=True):
-        sys.stdout.write("%s [Y/n] " % prompt)
-        response = input()
-        if response == "" or response[0].lower() == 'y':
-            return True
-        elif response[0].lower() == 'n':
-            return False
+def _install(src, dst):
+    if os.path.lexists(dst):
+        if os.path.islink(dst):
+            os.remove(dst)
         else:
-            return self._confirm(prompt, default=default)
+            candidate = '%s.bak' % dst
+            i = 0
+            while os.path.exists(candidate):
+                candidate = '%s.bak.%d' % (dst, i)
+                i += 1
+            os.rename(dst, candidate)
 
-    def _external(self, cmd, indent=1):
-        p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        stdoutdata, _ = p.communicate()
-        for l in stdoutdata.decode('utf-8').splitlines():
-            print("%s%s" % ('\t' * indent, l))
+    os.symlink(src, dst)
+    print("Symlinked %s to %s" % (dst, src))
 
-    def run(self):
-        print("Updating submodules")
-        self._external('git submodule init')
-        self._external('git submodule update')
+def preprocess():
+    _external('git submodule init', cwd=GIT_ROOT)
+    _external('git submodule update', cwd=GIT_ROOT)
 
-        for name,method in self.installables:
-            if self._confirm("Install %s?" % name):
-                print("Installing %s:" % name)
-                method()
-                print()
+def symlink_dotfiles():
+    for name in os.listdir(GIT_ROOT):
+        src = os.path.join(GIT_ROOT, name)
+
+        if name in SPECIAL:
+            dst = SPECIAL[name]
+        elif name.startswith('.'):
+            dst = os.path.join(HOME, name)
+        else:
+            dst = None
+
+        if dst is not None:
+            _install(src, dst)
+
+def postprocess():
+    _external('rake', cwd=os.path.join(GIT_ROOT, '.vim'))
 
 def main():
-    di = DotfileInstaller()
-    di.run()
+    preprocess()
+    symlink_dotfiles()
+    postprocess()
 
 if __name__ == '__main__':
     main()

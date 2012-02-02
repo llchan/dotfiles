@@ -1,1 +1,9 @@
-Automatically pulls the submodules and symlinks things to these files.
+Requrements
+===========
+* git
+* rake (for janus)
+
+Installation
+============
+    python dotfiles.py
+
