@@ -16,3 +16,6 @@
 [submodule ".janus/YankRing"]
 	path = .janus/YankRing
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule ".janus/camelcasemotion"]
+	path = .janus/camelcasemotion
+	url = https://github.com/vim-scripts/camelcasemotion.git

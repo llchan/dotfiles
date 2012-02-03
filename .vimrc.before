@@ -1,6 +1,7 @@
 let mapleader = ","
 
 call janus#disable_plugin('pep8')
+call janus#disable_plugin('vimwiki')
 
 let g:yankring_replace_n_pkey = 0
 let g:yankring_replace_n_nkey = 0
