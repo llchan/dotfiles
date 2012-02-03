@@ -1,10 +1,19 @@
+set showcmd
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set scrolloff=30
+
+set textwidth=80
+
+set cursorline
+
 set wildmenu
 set wildmode=list:longest,full
 
+set t_Co=256
 set background=dark
 colorscheme molokai
 
@@ -19,4 +28,15 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 
+let g:pep8_ignore_default_mapping = 1
+let g:pep8_ignore = "E203,E241,E501"
+
+map Y y$
 nnoremap ;; :w<cr>
+
+let g:SuperTabDefaultCompletionType = "context"
+
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+autocmd FileType python nnoremap <silent><buffer><leader>pr :w! <cr> :!python %<cr>
+
+"autocmd FileType c nnoremap <silent><buffer><leader>m :make<cr>
