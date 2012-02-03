@@ -2,4 +2,21 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set wildmenu
+set wildmode=list:longest,full
+
+set background=dark
 colorscheme molokai
+
+nmap <leader>a= :Tabularize /=.*<cr>
+vmap <leader>a= :Tabularize /=.*<cr>
+nmap <leader>a: :Tabularize /:\zs<cr>
+vmap <leader>a: :Tabularize /:\zs<cr>
+
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
+
+nnoremap ;; :w<cr>

@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
-import inspect
 import subprocess
 
 ### Python 2 compatability
@@ -10,9 +8,12 @@ try:
 except NameError:
     pass
 
+
 def get_git_root():
-    stdout = subprocess.check_output('git rev-parse --show-toplevel',
-            shell=True, cwd=os.path.dirname(os.path.abspath(__file__)))
+    p = subprocess.Popen('git rev-parse --show-toplevel',
+            shell=True, cwd=os.path.dirname(os.path.abspath(__file__)),
+            stdout=subprocess.PIPE)
+    stdout, _ = p.communicate()
     return stdout.decode('utf-8').strip()
 GIT_ROOT = get_git_root()
 
@@ -27,8 +28,10 @@ SPECIAL = {
     '.irssi': None,
     }
 
+
 def _external(cmd, cwd=None):
     subprocess.check_call(cmd, shell=True, cwd=cwd)
+
 
 def _install(src, dst):
     if os.path.lexists(dst):
@@ -45,9 +48,11 @@ def _install(src, dst):
     os.symlink(src, dst)
     print("Symlinked %s to %s" % (dst, src))
 
+
 def preprocess():
     _external('git submodule init', cwd=GIT_ROOT)
     _external('git submodule update', cwd=GIT_ROOT)
+
 
 def symlink_dotfiles():
     for name in os.listdir(GIT_ROOT):
@@ -63,8 +68,12 @@ def symlink_dotfiles():
         if dst is not None:
             _install(src, dst)
 
+
 def postprocess():
+    _external('git checkout master', cwd=os.path.join(GIT_ROOT, '.vim'))
+    _external('git pull', cwd=os.path.join(GIT_ROOT, '.vim'))
     _external('rake', cwd=os.path.join(GIT_ROOT, '.vim'))
+
 
 def main():
     preprocess()

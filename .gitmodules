@@ -4,3 +4,12 @@
 [submodule ".janus/vim-powerline"]
 	path = .janus/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule ".janus/tabular"]
+	path = .janus/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule ".janus/vim-pep8"]
+	path = .janus/vim-pep8
+	url = https://github.com/adrianrego/vim-pep8.git
+[submodule ".janus/vim-indent-guides"]
+	path = .janus/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
