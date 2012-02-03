@@ -13,3 +13,6 @@
 [submodule ".janus/vim-indent-guides"]
 	path = .janus/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".janus/YankRing"]
+	path = .janus/YankRing
+	url = https://github.com/vim-scripts/YankRing.vim.git

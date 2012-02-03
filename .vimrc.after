@@ -6,7 +6,10 @@ set expandtab
 
 set scrolloff=30
 
-set textwidth=80
+"set textwidth=80
+set textwidth=0
+set formatoptions=1
+set linebreak
 
 set cursorline
 
@@ -33,6 +36,11 @@ let g:pep8_ignore = "E203,E241,E501"
 
 map Y y$
 nnoremap ;; :w<cr>
+
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 let g:SuperTabDefaultCompletionType = "context"
 
