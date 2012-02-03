@@ -5,6 +5,7 @@ set shiftwidth=4
 set expandtab
 
 set scrolloff=30
+set equalalways
 
 "set textwidth=80
 set textwidth=0
@@ -31,7 +32,7 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 
-let g:pep8_ignore_default_mapping = 1
+let g:pep8_ignore_default_mapping = ""
 let g:pep8_ignore = "E203,E241,E501"
 
 map Y y$
@@ -48,3 +49,6 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 autocmd FileType python nnoremap <silent><buffer><leader>pr :w! <cr> :!python %<cr>
 
 "autocmd FileType c nnoremap <silent><buffer><leader>m :make<cr>
+
+let NERDShutUp = 1
+let NERDSpaceDelims = 1
