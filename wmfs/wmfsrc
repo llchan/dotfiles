@@ -154,8 +154,8 @@
     border = false
 
     # Hide empty tags in tag list
-    # autohide = false 
-    autohide = true
+    autohide = false 
+    # autohide = true
 
     # Mouse buttons action on tag.
     mouse_button_tag_sel       = "1"
@@ -164,12 +164,12 @@
     mouse_button_tag_next      = "4"
     mouse_button_tag_prev      = "5"
 
-    [tag] name = "term" [/tag]
-    [tag] name = "web" [/tag]
-    [tag] name = "chat" [/tag]
-    [tag] name = "music" [/tag]
-    [tag] name = "media" [/tag]
-    [tag] name = "other" [/tag]
+    [tag] name = "1" [/tag]
+    [tag] name = "2" [/tag]
+    [tag] name = "3" [/tag]
+    [tag] name = "4" [/tag]
+    [tag] name = "5" [/tag]
+    [tag] name = "6" [/tag]
 [/tags]
 
 [root]
@@ -246,23 +246,23 @@
 [/client]
 
 [rules]
-    [rule]
-        instance = "urxvt"
-        tag = 1
-        follow_client = true
-    [/rule]
-
-    [rule]
-        instance = "chromium"
-        tag = 2
-        follow_client = true
-    [/rule]
-
-    [rule]
-        instance = "Pidgin"
-        tag = 3
-        follow_client = false
-    [/rule]
+#     [rule]
+#         instance = "urxvt"
+#         tag = 1
+#         follow_client = true
+#     [/rule]
+# 
+#     [rule]
+#         instance = "chromium"
+#         tag = 2
+#         follow_client = true
+#     [/rule]
+# 
+#     [rule]
+#         instance = "Pidgin"
+#         tag = 3
+#         follow_client = false
+#     [/rule]
 [/rules]
 
 [menu]
@@ -448,10 +448,12 @@
     # change screen
     [key] mod = {"Super"} key = "Tab" func = "screen_next" [/key]
     [key] mod = {"Super", "Shift"} key = "Tab" func = "screen_prev" [/key]
+    [key] mod = {"Super"} key = "p" func = "screen_next" [/key]
 
     # swap client in the next/prev screen
     [key] mod = {"Super", "Shift"} key = "a" func = "client_screen_next" [/key]
     [key] mod = {"Super", "Shift"} key = "z" func = "client_screen_prev" [/key]
+    [key] mod = {"Super", "Shift"} key = "p" func = "client_screen_prev" [/key]
 
     # [key] mod = {"Alt"} key = "e" func = "toggle_tag_expose" [/key]
 [/keys]

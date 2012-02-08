@@ -21,11 +21,13 @@ HOME = os.path.expanduser('~')
 
 SPECIAL = {
     os.path.basename(__file__): None,
+    'README.markdown': None,
     '.git': None,
     '.gitmodules': None,
     '.gitignore': None,
-    '.wmfs': None,
-    '.irssi': None,
+    'wmfs': '~/.config/wmfs',
+    'conky': '~/.config/conky',
+    'irssi': None,
     }
 
 
@@ -63,16 +65,16 @@ def symlink_dotfiles():
         elif name.startswith('.'):
             dst = os.path.join(HOME, name)
         else:
-            dst = None
+            dst = os.path.join(HOME, '.' + name)
 
         if dst is not None:
-            _install(src, dst)
+            _install(src, os.path.expanduser(dst))
 
 
 def postprocess():
-    _external('git checkout master', cwd=os.path.join(GIT_ROOT, '.vim'))
-    _external('git pull', cwd=os.path.join(GIT_ROOT, '.vim'))
-    _external('rake', cwd=os.path.join(GIT_ROOT, '.vim'))
+    _external('git checkout master', cwd=os.path.join(GIT_ROOT, 'vim'))
+    _external('git pull', cwd=os.path.join(GIT_ROOT, 'vim'))
+    _external('rake', cwd=os.path.join(GIT_ROOT, 'vim'))
 
 
 def main():

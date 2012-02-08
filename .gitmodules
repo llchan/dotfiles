@@ -1,21 +1,21 @@
-[submodule ".vim"]
-	path = .vim
+[submodule "vim"]
+	path = vim
 	url = https://github.com/carlhuda/janus.git
-[submodule ".janus/vim-powerline"]
-	path = .janus/vim-powerline
+[submodule "janus/vim-powerline"]
+	path = janus/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule ".janus/tabular"]
-	path = .janus/tabular
+[submodule "janus/tabular"]
+	path = janus/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule ".janus/vim-pep8"]
-	path = .janus/vim-pep8
+[submodule "janus/vim-pep8"]
+	path = janus/vim-pep8
 	url = https://github.com/adrianrego/vim-pep8.git
-[submodule ".janus/vim-indent-guides"]
-	path = .janus/vim-indent-guides
+[submodule "janus/vim-indent-guides"]
+	path = janus/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule ".janus/YankRing"]
-	path = .janus/YankRing
+[submodule "janus/YankRing"]
+	path = janus/YankRing
 	url = https://github.com/vim-scripts/YankRing.vim.git
-[submodule ".janus/camelcasemotion"]
-	path = .janus/camelcasemotion
+[submodule "janus/camelcasemotion"]
+	path = janus/camelcasemotion
 	url = https://github.com/vim-scripts/camelcasemotion.git

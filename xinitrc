@@ -13,6 +13,7 @@ xrdb -merge ~/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+xsetroot -cursor_name left_ptr
 
 DEFAULT_SESSION=wmfs
 
@@ -25,6 +26,9 @@ awesome)
 	;;
 wmfs)
 	exec wmfs
+	;;
+xmonad)
+	exec xmonad
 	;;
 xfce)
 	exec ck-launch-sesion startxfce4
