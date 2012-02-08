@@ -202,8 +202,8 @@ myWorkspaces = --clickable $ --clickable workspaces now declared in myDzenPP
 {- $ gaps [(U,16), (D,16), (L,0), (R,0)] -}
 -- Layout hook
 myLayoutHook = id
-	$ gaps [(U,0), (D,0), (L,0), (R,0)]
-	$ avoidStruts
+	$ gaps [(U,16), (D,0), (L,0), (R,0)]
+	{- $ avoidStruts -}
 	$ minimize
 	$ mkToggle (single TABBED)
 	$ mkToggle (single MIRROR)
@@ -328,15 +328,15 @@ myDzenPP h = defaultPP
 -- Key bindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-	[ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)                       --Launch a terminal
+	[ ((modMask, xK_Return), spawn $ XMonad.terminal conf)                       --Launch a terminal
 	, ((mod1Mask, xK_F2), shellPrompt myXPConfig)                                              --Launch Xmonad shell prompt
 	, ((mod1Mask, xK_space), shellPrompt myXPConfig)                                           --Launch Xmonad shell prompt
 	, ((modMask, xK_F2), xmonadPrompt myXPConfig)                                              --Launch Xmonad prompt
 	, ((modMask, xK_g), goToSelected $ myGSConfig myColorizer)                                 --Launch GridSelect
-	, ((modMask, xK_masculine), scratchPad)                                                    --Scratchpad
-	, ((modMask, xK_o), spawn "gksu halt")                                                     --Power off
-	, ((modMask .|. shiftMask, xK_o), spawn "gksu reboot")                                     --Reboot
-	, ((mod1Mask, xK_F3), spawn "chromium")                                                    --Launch chromium
+	, ((modMask, xK_semicolon), scratchPad)                                                    --Scratchpad
+	{- , ((modMask, xK_o), spawn "gksu halt")                                                     --Power off -}
+	{- , ((modMask .|. shiftMask, xK_o), spawn "gksu reboot")                                     --Reboot -}
+	{- , ((mod1Mask, xK_F3), spawn "chromium")                                                    --Launch chromium -}
 	, ((modMask, xK_c), kill)                                                                  --Close focused window
 	, ((mod1Mask, xK_F4), kill)
 	, ((modMask, xK_space), sendMessage NextLayout)                                            --Rotate through the available layout algorithms
