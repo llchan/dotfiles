@@ -1,5 +1,6 @@
 Requrements
 ===========
+* python
 * git
 * rake (for janus)
 
