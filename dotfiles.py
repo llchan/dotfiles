@@ -47,8 +47,11 @@ def _install(src, dst):
                 i += 1
             os.rename(dst, candidate)
 
-    os.symlink(src, dst)
-    print("Symlinked %s to %s" % (dst, src))
+    try:
+        os.symlink(src, dst)
+        print("Symlinked %s to %s" % (dst, src))
+    except:
+        print("Skipped %s" % dst)
 
 
 def preprocess():
