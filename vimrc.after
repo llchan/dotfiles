@@ -36,7 +36,7 @@ let g:pep8_ignore_default_mapping = ""
 let g:pep8_ignore = "E203,E241,E501"
 
 map Y y$
-nnoremap ;; :w<cr>
+" nnoremap ;; :w<cr>
 
 nnoremap j gj
 nnoremap k gk
@@ -53,3 +53,12 @@ autocmd FileType python nnoremap <silent><buffer><leader>pr :w! <cr> :!python %<
 let NERDShutUp = 1
 let NERDSpaceDelims = 1
 
+nnoremap <silent><buffer><leader>sp i <esc>la <esc>h
+
+
+" set nolist
+" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+" set listchars=tab:▸\ ,trail:⋅,extends:>,precedes:<
+set showbreak=↪
+noremap <leader>sl :set list!<CR>
