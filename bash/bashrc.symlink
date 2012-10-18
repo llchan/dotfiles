@@ -1,0 +1,8 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+DOTFILES_ROOT=$(dirname $(dirname $(readlink -f $HOME/.bashrc)))
+aliases="$DOTFILES_ROOT/*/aliases.sh"
+for file in $aliases; do
+    source "$file"
+done

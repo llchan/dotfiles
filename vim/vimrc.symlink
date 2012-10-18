@@ -1,0 +1,42 @@
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
+Bundle 'wgibbs/vim-irblack'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
+Bundle 'Lokaltog/vim-powerline'
+
+filetype plugin indent on
+
+let mapleader = ","
+
+set nocompatible
+set encoding=utf-8
+
+set equalalways
+
+set ts=4 sw=4 et
+set autoindent
+
+set laststatus=2
+set cursorline
+set number
+set t_Co=256
+set background=dark
+colorscheme ir_black
+
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+let NERDShutUp = 1
+let NERDSpaceDelims = 1
