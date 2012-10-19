@@ -2,6 +2,18 @@
 
 import os
 import glob
+import shutil
+
+def confirm(prompt='Confirm', default=False):
+    default_str = {True: '[Y/n]', False: '[y/N]'}[default]
+    while True:
+        response = raw_input('{0} {1}: '.format(prompt, default_str)).lower()
+        if not response:
+            return default
+        if response not in ('y', 'n'):
+            print('Please enter y or n')
+            continue
+        return {'y': True, 'n': False}
 
 def process_package(dotfile_root, dirname, test=False):
     print(dirname)
@@ -17,11 +29,19 @@ def process_package(dotfile_root, dirname, test=False):
         else:
             raise ValueError('Unrecognized symlink variant {0}'.format(variant))
 
-        if os.path.exists(dst):
+        if os.path.lexists(dst):
             if os.path.realpath(dst) == os.path.realpath(src):
                 continue
-            print(src, dst)
-            raise NotImplementedError
+            if confirm('Replace {0}?'.format(dst)):
+                try:
+                    if not os.path.islink(dst) and os.path.isdir(dst):
+                        shutil.rmtree(dst)
+                    else:
+                        os.remove(dst)
+                except OSError:
+                    pass
+            else:
+                print('Skipping' + dst)
 
         parent = os.path.dirname(dst)
         if not os.path.exists(parent):
@@ -42,7 +62,7 @@ if __name__ == '__main__':
     # Use optparse to support old vanilla pythons
     import optparse 
     parser = optparse.OptionParser()
-    parser.add_option('-n', '--test', action='store_true')	
+    parser.add_option('-n', '--test', action='store_true')      
     opts, args = parser.parse_args()
     if len(args) != 0:
         parser.error('Incorrect number of arguments! (expect 0, got {0})'.format(len(args)))
