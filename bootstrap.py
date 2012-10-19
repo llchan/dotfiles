@@ -32,7 +32,11 @@ def process_package(dotfile_root, dirname, test=False):
         if os.path.lexists(dst):
             if os.path.realpath(dst) == os.path.realpath(src):
                 continue
-            if confirm('Replace {0}?'.format(dst)):
+            if os.path.islink(dst):
+                prompt = 'Replace {0}? ({1})'.format(dst, os.readlink(dst))
+            else:
+                prompt = 'Replace {0}?'.format(dst)
+            if confirm(prompt):
                 try:
                     if not os.path.islink(dst) and os.path.isdir(dst):
                         shutil.rmtree(dst)
