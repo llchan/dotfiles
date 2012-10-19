@@ -1,6 +1,5 @@
 [user]
     name = "Lawrence Chan"
-	email = element103@gmail.com
 
 [core]
     editor = vim
