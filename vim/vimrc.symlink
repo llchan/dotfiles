@@ -18,22 +18,76 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Shougo/neocomplcache'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
+Bundle 'Rip-Rip/clang_complete'
+Bundle 'vim-scripts/google.vim'
 
 filetype plugin indent on
 
 let mapleader = ","
 
+"--------------------
+" Basic Setup
+"--------------------
 set nocompatible
+set number            " Show line numbers
+set ruler             " Show line and column number
+syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8
 
-set equalalways
+"--------------------
+" Whitespace
+"--------------------
+set nowrap
+set ts=4 sw=4 sts=4 et
+set backspace=indent,eol,start    " backspace through everything in insert mode
 
-set ts=4 sw=4 et
+"--------------------
+" Menu
+"--------------------
+set wildmenu
+set wildmode=list:longest,full
+
+"--------------------
+" Searching
+"--------------------
+set hlsearch    " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
+
+"--------------------
+" Backup and swap files
+"--------------------
+set backupdir=~/.vim/.backup/    " where to put backup files.
+set directory=~/.vim/.swap/      " where to put swap files.
+
+"--------------------
+" Mappings
+"--------------------
+" sudo write
+cmap w!! %!sudo tee > /dev/null %
+
+" Swap two words
+nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
+
+" Underline the current line with '='
+nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
+
+" Toggle text wrapping
+nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
+
+" Toggle hlsearch with <leader>hs
+nmap <leader>hs :set hlsearch! hlsearch?<CR>
+
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+
+
+set equalalways
 set autoindent
 
 set laststatus=2
 set cursorline
-set number
 set t_Co=256
 set background=dark
 colorscheme ir_black
@@ -45,3 +99,16 @@ vnoremap k gk
 
 let NERDShutUp = 1
 let NERDSpaceDelims = 1
+
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+let g:syntastic_mode_map = {'mode': 'passive'}
+
+let g:clang_use_library = 1
+let g:clang_library_path = "/home/lchan/lib"
+let g:clang_complete_copen = 1
+let g:clang_complete_auto = 0
+
+map <leader>qc :cclose<cr>
+map <leader>qo :copen<cr>
