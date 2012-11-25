@@ -99,3 +99,4 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
+export TERM=xterm-256color
