@@ -13,7 +13,7 @@
 #define MASTER_SIZE     0.52
 #define SHOW_PANEL      True      /* show panel by default on exec */
 #define TOP_PANEL       True      /* False means panel is on bottom */
-#define PANEL_HEIGHT    0         /* 0 for no space for panel, thus no panel */
+#define PANEL_HEIGHT    14        /* 0 for no space for panel, thus no panel */
 #define DEFAULT_MODE    TILE      /* initial layout/mode: TILE MONOCLE BSTACK GRID FLOAT */
 #define ATTACH_ASIDE    True      /* False means new window is master */
 #define FOLLOW_WINDOW   True      /* follow the window when moved to a different desktop */
@@ -82,14 +82,14 @@ static Key keys[] = {
     {  MOD4|CONTROL,     XK_q,          quit,              {.i = 1}}, /* quit with exit value 1 */
     {  MOD4,             XK_Return,     spawn,             {.com = termcmd}},
     {  MOD1,             XK_v,          spawn,             {.com = menucmd}},
-    {  MOD1,             XK_j,          moveresize,        {.v = (int []){   0,  25,   0,   0 }}}, /* move down  */
-    {  MOD1,             XK_k,          moveresize,        {.v = (int []){   0, -25,   0,   0 }}}, /* move up    */
-    {  MOD1,             XK_l,          moveresize,        {.v = (int []){  25,   0,   0,   0 }}}, /* move right */
-    {  MOD1,             XK_h,          moveresize,        {.v = (int []){ -25,   0,   0,   0 }}}, /* move left  */
-    {  MOD1|SHIFT,       XK_j,          moveresize,        {.v = (int []){   0,   0,   0,  25 }}}, /* height grow   */
-    {  MOD1|SHIFT,       XK_k,          moveresize,        {.v = (int []){   0,   0,   0, -25 }}}, /* height shrink */
-    {  MOD1|SHIFT,       XK_l,          moveresize,        {.v = (int []){   0,   0,  25,   0 }}}, /* width grow    */
-    {  MOD1|SHIFT,       XK_h,          moveresize,        {.v = (int []){   0,   0, -25,   0 }}}, /* width shrink  */
+    {  MOD1,             XK_j,          moveresize,        {.v = (int []){   0,  100,   0,   0 }}}, /* move down  */
+    {  MOD1,             XK_k,          moveresize,        {.v = (int []){   0, -100,   0,   0 }}}, /* move up    */
+    {  MOD1,             XK_l,          moveresize,        {.v = (int []){  100,   0,   0,   0 }}}, /* move right */
+    {  MOD1,             XK_h,          moveresize,        {.v = (int []){ -100,   0,   0,   0 }}}, /* move left  */
+    {  MOD1|SHIFT,       XK_j,          moveresize,        {.v = (int []){   0,   0,   0,  100 }}}, /* height grow   */
+    {  MOD1|SHIFT,       XK_k,          moveresize,        {.v = (int []){   0,   0,   0, -100 }}}, /* height shrink */
+    {  MOD1|SHIFT,       XK_l,          moveresize,        {.v = (int []){   0,   0,  100,   0 }}}, /* width grow    */
+    {  MOD1|SHIFT,       XK_h,          moveresize,        {.v = (int []){   0,   0, -100,   0 }}}, /* width shrink  */
        DESKTOPCHANGE(    XK_1,                             0)
        DESKTOPCHANGE(    XK_2,                             1)
        DESKTOPCHANGE(    XK_3,                             2)

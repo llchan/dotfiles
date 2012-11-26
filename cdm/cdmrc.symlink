@@ -13,14 +13,14 @@
 #   '/usr/bin/fbterm'                # or start a frame buffer console,
 #   '/usr/bin/cdm ~/.submenu.cdmrc'  # or go to a submenu :)
 # )
-binlist=('~/.xinitrc wmfs' '/bin/bash --login', '/bin/zsh --login')
+binlist=('~/.xinitrc wmfs' '~/.xinitrc monsterwm' '/bin/bash --login', '/bin/zsh --login')
 
 # List all program display names, one-by-one matched with $binlist.
 # Names with whitespaces should be quoted or escaped.
 #
 # (Continued example:)
 # namelist=('X session' Console FBTerm 'Sub menu')
-namelist=(WMFS bash zsh)
+namelist=(WMFS MonsterWM bash zsh)
 
 # Type of the programs, one-by-one matched with $binlist.
 # `C' for *C*onsole programs, which would be `exec'ed.
@@ -28,7 +28,7 @@ namelist=(WMFS bash zsh)
 #
 # (Continued example:)
 # flaglist=(X C C C)
-flaglist=(X C C)
+flaglist=(X X C C)
 
 # Style for the cdm dialog, which is printed with dialog(1).
 # Default to unset, causing dialog(1) to use the system wide default.

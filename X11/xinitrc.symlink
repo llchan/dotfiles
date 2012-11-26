@@ -27,6 +27,10 @@ awesome)
 wmfs)
 	exec wmfs
 	;;
+monsterwm)
+	# exec monsterwm
+	exec ~/dotfiles/monsterwm/monsterwm2bar.sh
+	;;
 xmonad)
 	exec xmonad
 	;;
