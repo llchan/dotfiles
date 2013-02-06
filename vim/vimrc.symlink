@@ -76,12 +76,17 @@ nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 " Toggle text wrapping
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
-" Toggle hlsearch with <leader>hs
-nmap <leader>hs :set hlsearch! hlsearch?<CR>
+" Toggle hlsearch
+nmap <leader>h :set hlsearch! hlsearch?<CR>
 
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
 
+" Toggle paste 
+map <leader>p :set invpaste!<CR>:set paste?<CR>
+
+" Make Y act more like C and D
+map Y y$
 
 set equalalways
 set autoindent
@@ -112,3 +117,9 @@ let g:clang_complete_auto = 0
 
 map <leader>qc :cclose<cr>
 map <leader>qo :copen<cr>
+
+set nolist
+" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+noremap <leader>sl :set list!<CR>
