@@ -13,7 +13,7 @@ def confirm(prompt='Confirm', default=False):
         if response not in ('y', 'n'):
             print('Please enter y or n')
             continue
-        return {'y': True, 'n': False}
+        return {'y': True, 'n': False}[response]
 
 def process_package(dotfile_root, dirname, test=False):
     print(dirname)
@@ -25,7 +25,11 @@ def process_package(dotfile_root, dirname, test=False):
         if variant == '':
             dst = os.path.join(os.path.expandvars('$HOME'), '.' + basename)
         elif variant == 'xdg':
-            dst = os.path.join(os.path.expandvars('$XDG_CONFIG_HOME'), dirname, basename)
+            xch = os.environ.get('XDG_CONFIG_HOME', None)
+            if xch is None:
+                print('Skipping ' + src)
+                continue
+            dst = os.path.join(xch, dirname, basename)
         else:
             raise ValueError('Unrecognized symlink variant {0}'.format(variant))
 
@@ -45,7 +49,8 @@ def process_package(dotfile_root, dirname, test=False):
                 except OSError:
                     pass
             else:
-                print('Skipping' + dst)
+                print('Skipping ' + dst)
+                continue
 
         parent = os.path.dirname(dst)
         if not os.path.exists(parent):

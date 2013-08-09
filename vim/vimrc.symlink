@@ -11,14 +11,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'wgibbs/vim-irblack'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neocomplcache'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-Bundle 'Rip-Rip/clang_complete'
+" Bundle 'Rip-Rip/clang_complete'
 Bundle 'vim-scripts/google.vim'
 
 filetype plugin indent on
@@ -58,8 +58,8 @@ set smartcase   " ... unless they contain at least one capital letter
 "--------------------
 " Backup and swap files
 "--------------------
-set backupdir=~/.vim/.backup/    " where to put backup files.
-set directory=~/.vim/.swap/      " where to put swap files.
+set backupdir=~/.vim/backup/    " where to put backup files.
+set directory=~/.vim/swap/      " where to put swap files.
 
 "--------------------
 " Mappings
