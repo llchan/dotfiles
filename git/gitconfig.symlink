@@ -1,0 +1,18 @@
+[user]
+    name = "Lawrence Chan"
+	email = element103@gmail.com
+
+[core]
+    editor = vim
+
+[color]
+    ui = true
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    df = diff
+    ol = "log --oneline"
+    hist = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
