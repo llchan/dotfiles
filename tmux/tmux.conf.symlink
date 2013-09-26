@@ -5,7 +5,7 @@ bind C-k send-prefix
 # basic settings
 set-window-option -g mode-keys vi # vi key
 set-option -g status-keys vi
-# set-window-option -g utf8 on # utf8 support
+set-window-option -g utf8 on # utf8 support
 set-window-option -g mode-mouse off # disable mouse
 
 # copy mode to escape key
