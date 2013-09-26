@@ -79,6 +79,8 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+bind J swap-pane -D
+bind K swap-pane -U
 bind - resize-pane -D 10
 bind + resize-pane -U 10
 bind < resize-pane -L 20
