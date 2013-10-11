@@ -1,3 +1,6 @@
+filetype off
+filetype plugin indent off
+
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -38,6 +41,10 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'mileszs/ack.vim'
 Bundle 'derekwyatt/vim-fswitch'
 " Bundle 'Townk/vim-autoclose'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'maxbrunsfeld/vim-yankstack'
+
+set rtp+=$GOROOT/misc/vim
 
 filetype plugin indent on
 
@@ -105,6 +112,7 @@ set smartcase   " ... unless they contain at least one capital letter
 set backupdir=~/.vim/backup/    " where to put backup files.
 " set nobackup
 " set nowritebackup
+set backupcopy=yes
 set directory=~/.vim/swap/      " where to put swap files.
 
 "--------------------
@@ -167,9 +175,11 @@ vnoremap k gk
 map <leader>tc :Tabularize /,\zs<cr>
 
 " camelCase <-> underscore
-map <leader>x_ :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g<cr>
-map <leader>xc :s#_\(\l\)#\u\1#g<cr>
-map <leader>xC :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<cr>
+" map <leader>x_ :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g<cr>
+" map <leader>xc :s#_\(\l\)#\u\1#g<cr>
+" map <leader>xC :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<cr>
+
+map <leader>r :RainbowParenthesesToggle<cr>
 
 "--------------------
 " Plugin Settings
@@ -213,4 +223,23 @@ au FileType less setl ts=2 sw=2 sts=2 et
 au FileType css setl ts=2 sw=2 sts=2 et
 
 au FileType cpp let c_no_curly_error=1
-au FileType cpp nmap <silent> <leader>m :FSSplitRight<cr>
+au FileType cpp nmap <silent> <leader>m :FSHere<cr>
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['darkgray',    'firebrick3'],
+    \ ]
