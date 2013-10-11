@@ -1,6 +1,7 @@
 # command prefix (like screen)
-set -g prefix C-k
+set -g prefix C-k # ,C-i
 bind C-k send-prefix
+# bind C-i send-prefix
 
 # basic settings
 set-window-option -g mode-keys vi # vi key
@@ -23,12 +24,15 @@ unbind '"'
 # bind _ split-window -v # vertical split
 bind C-j previous-window
 bind C-k next-window
+bind C-p previous-window
+bind C-n next-window
 
 # window title
 set-option -g set-titles on
 # set-option -g set-titles-string 'tmux #S:#I.#P #W' # window number,program name,active (or not)
 set-option -g set-titles-string 'tmux' # window number,program name,active (or not)
-set-window-option -g automatic-rename on # auto name
+set-window-option -g automatic-rename off # auto name
+set-option -g allow-rename off
 
 # messages
 # set-window-option -g mode-bg magenta
@@ -71,6 +75,7 @@ set-window-option -g window-status-current-attr bold
 
 # LLC: quick window switching
 bind-key C-k last-window
+# bind-key C-i last-window
 
 # LLC: vim window bindings
 bind v split-window -h # horizontal split
@@ -90,3 +95,5 @@ bind m set-window-option monitor-activity
 
 set-option -g default-terminal 'screen-256color'
 set-window-option -g aggressive-resize on
+
+set -g default-path '~'
