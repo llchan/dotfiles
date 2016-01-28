@@ -10,23 +10,23 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
 " Plug 'powerline/powerline'  " replaced by vim-airline, less deps
 " Plug 'scrooloose/nerdcommenter'  " replaced by vim-commentary
 Plug 'scrooloose/syntastic'
+Plug 'sirver/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'twerth/ir_black'
+Plug 'valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-
-Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'python'], 'do': './install.py'}
-
 
 call plug#end()
 
