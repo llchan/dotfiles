@@ -1,3 +1,5 @@
+# set-option -g default-command "reattach-to-user-namespace -l zsh"
+
 # command prefix (like screen)
 set -g prefix C-k # ,C-i
 bind C-k send-prefix
