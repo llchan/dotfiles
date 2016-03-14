@@ -12,3 +12,5 @@ fi
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+source /usr/local/bin/virtualenvwrapper.sh
