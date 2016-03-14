@@ -121,3 +121,6 @@ aliases="$DOTFILES_ROOT/*/aliases.sh"
 for file in $aliases; do
     source "$file"
 done
+
+# export NVM_DIR=~/.nvm
+# . $(brew --prefix nvm)/nvm.sh
