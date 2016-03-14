@@ -15,4 +15,7 @@
     br = branch
     df = diff
     ol = "log --oneline"
-    hist = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
+    hist = log --graph --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
+    allhist = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
+[diff]
+	algorithm = patience
