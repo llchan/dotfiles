@@ -42,7 +42,7 @@ def process_package(dotfile_root, dirname, test=False):
                 prompt = 'Replace {0}? ({1})'.format(dst, os.readlink(dst))
             else:
                 prompt = 'Replace {0}?'.format(dst)
-            if confirm(prompt):
+            if not os.path.exists(dst) or confirm(prompt):
                 try:
                     if not os.path.islink(dst) and os.path.isdir(dst):
                         print('| rm -rf ' + dst)
