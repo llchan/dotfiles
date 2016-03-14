@@ -1,11 +1,21 @@
+STOW_VERSION := 2.2.2
+STOW_TAR_GZ := $(CURDIR)/vendor/stow-$(STOW_VERSION).tar.gz
+STOW_SRC := $(CURDIR)/vendor/stow-$(STOW_VERSION)
+STOW_PREFIX := $(STOW_SRC)/dist
+STOW_BIN := $(STOW_PREFIX)/bin/stow
+
 .PHONY:
 all: stow
 
 .PHONY: stow
-stow: vendor/stow-2.2.2/dist/bin/stow
+stow: $(STOW_BIN)
 
-vendor/stow-2.2.2/dist/bin/stow: vendor/stow-2.2.2
-	cd vendor/stow-2.2.2 && ./configure --prefix=$(CURDIR)/vendor/stow-2.2.2/dist && make && make install
+$(STOW_BIN): $(STOW_SRC)
+	cd $(STOW_SRC) && \
+		./configure --prefix=$(STOW_PREFIX) && \
+		make && \
+		make install
 
-vendor/stow-2.2.2: vendor/stow-2.2.2.tar.gz
-	tar xf $< -C $(@D)
+$(STOW_SRC): $(STOW_TAR_GZ)
+	mkdir -p $@
+	tar xf $< -C $@ --strip-components=1
