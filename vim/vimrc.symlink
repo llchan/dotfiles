@@ -17,10 +17,8 @@ Bundle 'honza/vim-snippets'
 " Bundle 'garbas/vim-snipmate'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'Shougo/neocomplcache'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-" Bundle 'Rip-Rip/clang_complete'
 Bundle 'vim-scripts/google.vim'
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'Valloric/YouCompleteMe'
@@ -43,6 +41,7 @@ Bundle 'derekwyatt/vim-fswitch'
 " Bundle 'Townk/vim-autoclose'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'cstrahan/vim-capnp'
 
 set rtp+=$GOROOT/misc/vim
 
@@ -91,7 +90,7 @@ set listchars=tab:▸\ ,trail:⋅
 "--------------------
 set wildignore+=*.swp
 let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/](\.waf|\.git$|\.hg$|\.svn$|vendor|node_modules|bower_components)',
+            \ 'dir': '\v[\/](\.waf|\.git$|\.hg$|\.svn$|vendor|node_modules|bower_components|tmp)',
             \ 'file': '\v(core\..*\.\d\+|\.lock.*|\.o|\.so|\.cc)$',
             \ }
 
@@ -221,6 +220,7 @@ au FileType html5 setl ts=2 sw=2 sts=2 et
 au FileType coffee setl ts=2 sw=2 sts=2 et
 au FileType less setl ts=2 sw=2 sts=2 et
 au FileType css setl ts=2 sw=2 sts=2 et
+au FileType clojure setl ts=2 sw=2 sts=2 et
 
 au FileType cpp let c_no_curly_error=1
 au FileType cpp nmap <silent> <leader>m :FSHere<cr>
@@ -243,3 +243,5 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['darkgray',    'firebrick3'],
     \ ]
+
+au FileType go setl ts=2 sts=2 sw=2 noet nolist
