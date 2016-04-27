@@ -282,3 +282,12 @@ let g:rbpt_colorpairs = [
 
 " netrw (:E)
 let g:netrw_liststyle=3
+
+
+"--------------------
+" airline
+"--------------------
+let g:airline_left_sep=''   " '║' '╟' '░' '▌' '▶' '»'
+let g:airline_right_sep=''  " '║' '╢' '░' '▐' '◀' '«'
+let g:airline#extensions#wordcount#enabled = 0  " disable word count
+" let g:airline#extensions#tabline#enabled = 1  " show tabline
