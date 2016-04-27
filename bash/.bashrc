@@ -7,6 +7,7 @@
 
 
 # ---- shell options ---- #
+set -o vi
 shopt -s checkwinsize  # checkhash
 
 stty -ixon  # disable flow control
@@ -21,12 +22,28 @@ HISTFILESIZE=1048576
 
 
 # ---- prompt options ---- #
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+git_prompt_paths=(
+    /usr/share/git-core/contrib/completion/git-prompt.sh
+    /usr/local/etc/bash_completion.d/git-prompt.sh
+)
+for p in "${git_prompt_paths[@]}"; do
+    if [ -r "$p" ]; then
+        source "$p"
+        git_prompt_loaded=true
+        break
+    fi
+done
+if [ "$git_prompt_loaded" != true ]; then
+    echo 'WARNING: git-prompt.sh could not be loaded, using dummy function' >2
+    __git_ps1() { :; }
+    export __git_ps1
+fi
 
 PROMPT_DIRTRIM=2
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=auto
 
 set_prompt () {
@@ -75,8 +92,8 @@ export PAGER=less
 
 case "$TERM" in
     rxvt-unicode-256color)
-	export TERM=xterm-256color
-	;;
+        export TERM=xterm-256color
+        ;;
 esac
 
 
