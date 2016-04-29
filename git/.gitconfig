@@ -14,3 +14,13 @@
     df = diff
     ol = "log --oneline"
     hist = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
+
+[branch]
+    rebase = true
+    autosetuprebase = always
+
+[pull]
+    rebase = true
+
+[push]
+    default = simple
