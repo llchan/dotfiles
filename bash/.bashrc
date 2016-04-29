@@ -1,4 +1,3 @@
-[ -r /etc/profile ] && source /etc/profile
 [ -r /etc/bashrc ] && source /etc/bashrc
 
 # If not running interactively, don't do anything
