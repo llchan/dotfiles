@@ -1,10 +1,29 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"--------------------
+" Portable-ish setup
+"--------------------
+" http://stackoverflow.com/questions/3377298/how-can-i-override-vim-and-vimrc-paths-but-no-others-in-vim
+
+" set default 'runtimepath' (without ~/.vim folders)
+let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
+
+" what is the name of the directory containing this file?
+let s:parent = expand('<sfile>:p:h')
+let s:vimdir = printf('%s/.vim', s:parent)
+
+" add the directory to 'runtimepath'
+let &runtimepath = printf('%s,%s,%s/after', s:vimdir, &runtimepath, s:vimdir)
+
+"--------------------
+" Plugins
+"--------------------
+
+let s:plug_vim = s:vimdir . '/autoload/plug.vim'
+if empty(glob(s:plug_vim))
+    silent !curl -fLo s:plug_vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(s:vimdir . '/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -12,6 +31,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
+Plug 'michaeljsmith/vim-indent-object'
 " Plug 'powerline/powerline'  " replaced by vim-airline, less deps
 " Plug 'scrooloose/nerdcommenter'  " replaced by vim-commentary
 Plug 'scrooloose/syntastic'
@@ -25,6 +45,7 @@ Plug 'twerth/ir_black'
 Plug 'valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'wellle/targets.vim'
 
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
@@ -145,11 +166,11 @@ set smartcase   " ... unless they contain at least one capital letter
 "--------------------
 " Backup and swap files
 "--------------------
-set backupdir=~/.vim/backup/    " where to put backup files.
+" set backupdir=~/.vim/backup/    " where to put backup files.
 " set nobackup
 " set nowritebackup
-set backupcopy=yes
-set directory=~/.vim/swap/      " where to put swap files.
+" set backupcopy=yes
+" set directory=~/.vim/swap/      " where to put swap files.
 
 "--------------------
 " UI + Colorscheme
@@ -283,6 +304,7 @@ let g:rbpt_colorpairs = [
 " netrw (:E)
 let g:netrw_liststyle=3
 
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 "--------------------
 " airline
@@ -291,3 +313,4 @@ let g:airline_left_sep=''   " '║' '╟' '░' '▌' '▶' '»'
 let g:airline_right_sep=''  " '║' '╢' '░' '▐' '◀' '«'
 let g:airline#extensions#wordcount#enabled = 0  " disable word count
 " let g:airline#extensions#tabline#enabled = 1  " show tabline
+let g:airline_theme='powerlineish'
