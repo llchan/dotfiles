@@ -8,6 +8,7 @@
 # ---- shell options ---- #
 set -o vi
 shopt -s checkwinsize  # checkhash
+shopt -s direxpand  # prevent tab from escaping env vars
 
 stty -ixon  # disable flow control
 
