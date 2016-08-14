@@ -34,7 +34,7 @@ for p in "${git_prompt_paths[@]}"; do
     fi
 done
 if [ "$git_prompt_loaded" != true ]; then
-    echo 'WARNING: git-prompt.sh could not be loaded, using dummy function' >2
+    echo 'WARNING: git-prompt.sh could not be loaded, using dummy function' >&2
     __git_ps1() { :; }
     export __git_ps1
 fi
