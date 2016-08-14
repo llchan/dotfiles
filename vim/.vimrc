@@ -19,7 +19,7 @@ let &runtimepath = printf('%s,%s,%s/after', s:vimdir, &runtimepath, s:vimdir)
 
 let s:plug_vim = s:vimdir . '/autoload/plug.vim'
 if empty(glob(s:plug_vim))
-    silent !curl -fLo s:plug_vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    execute 'silent !curl -fLo ' . s:plug_vim . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
