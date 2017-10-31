@@ -1,6 +1,4 @@
 [user]
-    name = "Lawrence Chan"
-	email = element103@gmail.com
 
 [core]
     editor = vim
@@ -14,8 +12,18 @@
     co = checkout
     br = branch
     df = diff
-    ol = "log --oneline"
+    ol = log --oneline
     hist = log --graph --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
-    allhist = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(blue)%ad %C(bold white)%s %C(green)%d %C(bold black)[%an]' --date=short
+
 [diff]
-	algorithm = patience
+    algorithm = patience
+
+[branch]
+    rebase = true
+    autosetuprebase = always
+
+[pull]
+    rebase = true
+
+[push]
+    default = simple

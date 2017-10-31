@@ -1,51 +1,110 @@
-filetype off
-filetype plugin indent off
+"--------------------
+" Portable-ish setup
+"--------------------
+" http://stackoverflow.com/questions/3377298/how-can-i-override-vim-and-vimrc-paths-but-no-others-in-vim
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-" Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'wgibbs/vim-irblack'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-" Bundle 'garbas/vim-snipmate'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/google.vim'
-Bundle 'vim-scripts/JavaScript-Indent'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'avakhov/vim-yaml'
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'airblade/vim-gitgutter'
-" Bundle 'SirVer/ultisnips'
-Bundle 'MarcWeber/ultisnips'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'nono/vim-handlebars'
-Bundle 'othree/html5.vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'groenewege/vim-less'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-repeat'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'mileszs/ack.vim'
-Bundle 'derekwyatt/vim-fswitch'
-" Bundle 'Townk/vim-autoclose'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'cstrahan/vim-capnp'
+" set default 'runtimepath' (without ~/.vim folders)
+let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
+
+" what is the name of the directory containing this file?
+let s:parent = expand('<sfile>:p:h')
+let s:vimdir = printf('%s/.vim', s:parent)
+
+" add the directory to 'runtimepath'
+let &runtimepath = printf('%s,%s,%s/after', s:vimdir, &runtimepath, s:vimdir)
+
+"--------------------
+" Plugins
+"--------------------
+
+let s:plug_vim = s:vimdir . '/autoload/plug.vim'
+if empty(glob(s:plug_vim))
+    execute 'silent !curl -fLo ' . s:plug_vim . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin(s:vimdir . '/plugged')
+
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'kshenoy/vim-signature'
+Plug 'michaeljsmith/vim-indent-object'
+" Plug 'powerline/powerline'  " replaced by vim-airline, less deps
+" Plug 'scrooloose/nerdcommenter'  " replaced by vim-commentary
+Plug 'scrooloose/syntastic'
+Plug 'sirver/ultisnips'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'twerth/ir_black'
+Plug 'valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'wellle/targets.vim'
+
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+
+call plug#end()
+
+" filetype off
+" filetype plugin indent off
+
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+
+" Plugin 'VundleVim/vundle.vim'
+
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-surround'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'scrooloose/nerdtree'
+" " Plugin 'ervandew/supertab'
+" Plugin 'kien/ctrlp.vim'
+" Plugin 'wgibbs/vim-irblack'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+" Plugin 'honza/vim-snippets'
+" " Plugin 'garbas/vim-snipmate'
+" Plugin 'Lokaltog/vim-powerline'
+" Plugin 'Lokaltog/vim-easymotion'
+" " Plugin 'Shougo/neocomplcache'
+" Plugin 'godlygeek/tabular'
+" Plugin 'majutsushi/tagbar'
+" " Plugin 'Rip-Rip/clang_complete'
+" Plugin 'vim-scripts/google.vim'
+" Plugin 'vim-scripts/JavaScript-Indent'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'avakhov/vim-yaml'
+" Plugin 'jeetsukumaran/vim-buffergator'
+" Plugin 'airblade/vim-gitgutter'
+" " Plugin 'SirVer/ultisnips'
+" Plugin 'MarcWeber/ultisnips'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'nono/vim-handlebars'
+" Plugin 'othree/html5.vim'
+" Plugin 'digitaltoad/vim-jade'
+" Plugin 'groenewege/vim-less'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'hynek/vim-python-pep8-indent'
+" Plugin 'mileszs/ack.vim'
+" Plugin 'derekwyatt/vim-fswitch'
+" " Plugin 'Townk/vim-autoclose'
+" Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'maxbrunsfeld/vim-yankstack'
+
+" call vundle#end()
 
 set rtp+=$GOROOT/misc/vim
 
-filetype plugin indent on
+" filetype plugin indent on
 
 let mapleader = ","
 
@@ -108,11 +167,11 @@ set smartcase   " ... unless they contain at least one capital letter
 "--------------------
 " Backup and swap files
 "--------------------
-set backupdir=~/.vim/backup/    " where to put backup files.
+" set backupdir=~/.vim/backup/    " where to put backup files.
 " set nobackup
 " set nowritebackup
-set backupcopy=yes
-set directory=~/.vim/swap/      " where to put swap files.
+" set backupcopy=yes
+" set directory=~/.vim/swap/      " where to put swap files.
 
 "--------------------
 " UI + Colorscheme
@@ -244,4 +303,16 @@ let g:rbpt_colorpairs = [
     \ ['darkgray',    'firebrick3'],
     \ ]
 
-au FileType go setl ts=2 sts=2 sw=2 noet nolist
+" netrw (:E)
+let g:netrw_liststyle=3
+
+let g:syntastic_python_flake8_args='--ignore=E501'
+
+"--------------------
+" airline
+"--------------------
+let g:airline_left_sep=''   " '║' '╟' '░' '▌' '▶' '»'
+let g:airline_right_sep=''  " '║' '╢' '░' '▐' '◀' '«'
+let g:airline#extensions#wordcount#enabled = 0  " disable word count
+" let g:airline#extensions#tabline#enabled = 1  " show tabline
+let g:airline_theme='powerlineish'
